@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://2tj2bw62qyou"]
+
+[ext_resource type="Script" path="res://scenes/popAltChar.gd" id="1_nk6kw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dfpaq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aal8v"]
+
+[node name="pop" type="CharacterBody3D" groups=["pop"]]
+script = ExtResource("1_nk6kw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_dfpaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_aal8v")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

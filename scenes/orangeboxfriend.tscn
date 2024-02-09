@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cln57v4i1slr5"]
+
+[ext_resource type="Texture2D" uid="uid://4wcok3i0xdhb" path="res://textures/texture_orange_01.png" id="1_v6ew7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq5fg"]
+albedo_texture = ExtResource("1_v6ew7")
+
+[sub_resource type="BoxMesh" id="BoxMesh_88q0s"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ju2a8"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="orangeboxfriend" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_yq5fg")
+mesh = SubResource("BoxMesh_88q0s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+metadata/inter = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ju2a8")

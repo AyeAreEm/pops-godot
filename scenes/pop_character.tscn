@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://pmeiomi4oxj4"]
+
+[ext_resource type="Script" path="res://scripts/Pops.gd" id="1_wdhdf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m71om"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i700y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kmsl0"]
+
+[node name="PopCharacter" type="Node3D" groups=["Pops"]]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Pops"]]
+script = ExtResource("1_wdhdf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_m71om")
+mesh = SubResource("CapsuleMesh_i700y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kmsl0")
